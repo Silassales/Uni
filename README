@@ -1,0 +1,30 @@
+**************************
+Silas Sales	0922973
+CIS*1500	A2(Luhn)
+Nov 29, 2015
+**************************
+
+*************
+Compilation
+*************
+
+gcc -Wall -pedantic -std=c99 -o a2LUHN a2LUHN.c
+
+**************************
+Running the program
+**************************
+
+When the program is run, a short intro will open first
+The user will then be prompted to enter a 16 digit credit card number
+Enter the number without any characters between the numbers
+If the number is too large, small, or contains a character the program will quit
+Once the number is inputed the program will output if the number was valid or not
+
+**************************
+Known Limitations
+**************************
+
+Cannot remove '-' characters that are included with alot of credit card numbers
+	-> the program will just quit, saying that there was a char entered
+Has to re-run in order to enter a new number
+No input that I could find would cause the program to crash
