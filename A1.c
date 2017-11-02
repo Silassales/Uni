@@ -4,7 +4,11 @@
 #include <math.h>
 
 /*The game of Mugwump:
+<<<<<<< HEAD
 To see how the game is player check the mainMenus function.*/
+=======
+To see how the game is player check the mainMenues function.*/
+>>>>>>> 7a86ea4944864e5e1b8e5ae2ba531daed372aab5
 
 
 /*Main Menu function -> will print out basic instructions to the terminal to explain the game to the user*/
