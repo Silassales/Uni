@@ -1,0 +1,205 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+#
+#  newProcessit.pl
+#
+#  Author: Ms. Code Monkey
+#  Commandline: perl newProcessit.pl
+#
+#  Functionality
+#     newProcessit.pl takes a file that consists of words and their
+#     definitions (both on one line) and does the following:
+#        a) given a word, prints out its definition
+#        b) given a string of letters, finds all words that start with this substring
+#        c) given a first letter, minimum and maximum number of letters and a number of
+#           words finds a random selection of the given number of words that start with
+#           the given letter and are between the minimum and maximum lengths given
+#
+
+my $switch = 0;
+my $total = 0;
+my $flag = 0;
+
+print "Enter the filename for the file containing the words and definitions: ";
+my $infilename = <>;
+chomp($infilename);
+open INFILE, $infilename or die $!;
+
+print "Do you want to convert multiple word terms into a single word [Y or N]? : ";
+my $answer = <>;
+chomp($answer);
+if ( $answer eq "Y" ) {
+   $switch = 0;
+} else {
+   $switch = 1;
+}
+
+my @val_array;
+my $word;
+my @wordDefns;
+while ( <INFILE> ) {
+   chomp;
+   @val_array = split(/\//,$_);
+   $word =  lc($val_array[0]);
+   if ( $switch == 0 || wordCount($word) == 1 ) {
+      convert($word);
+      $wordDefns[$total] =  $word . "/" . $val_array[1];
+      $total++;
+   } 
+}
+close INFILE;
+
+my @sortedWordDefns = sort { lc($a) cmp lc($b) } @wordDefns;   # alphabetical sort
+
+my $i = 0;
+my $filename;
+my $letter;
+while ( $i < $total ) {
+   $letter = substr($sortedWordDefns[$i],0,1);
+   $filename = ">" . $letter . "WordDefns.txt";
+   open FILE, $filename or die $!;
+   while ( $i < $total && ($letter eq substr($sortedWordDefns[$i],0,1)) ) {
+      print FILE "$sortedWordDefns[$i]\n";
+      $i++;
+   }
+   close FILE;
+}
+
+print "Find the definition - Enter the term [or 0 to quit this search]: ";
+my $defnFind = <>;
+chomp($defnFind);
+
+my $line;
+while ( $defnFind ne "0" ) {
+   $defnFind = lc($defnFind);
+   convert($defnFind);
+
+   $letter = substr($defnFind,0,1);
+   $filename = "<" . $letter . "WordDefns.txt";
+   open FILE, $filename or die $!;
+   $flag = 0;
+   while ( $flag == 0 ) {
+      if ( defined ($line = <FILE>) ) {
+         chomp($line);
+         @val_array = split(/\//,$line);
+         $word = $val_array[0];
+         if ( $word eq $defnFind ) {
+            print "Definition: $val_array[1]\n";
+            $flag = 1;
+         }
+      } else {
+         $flag = 2;
+      }
+   }
+   close FILE;
+   if ( $flag == 2 ) {
+      print "Definition: None found\n";
+   }
+   print "Find the definition - Enter the term [or 0 to quit this search]: ";
+   $defnFind = <>;
+   chomp($defnFind);
+}
+
+print "Find all words starting with the following string [or 0 to quit this search]: ";
+my $strFind = <>;
+chomp($strFind);
+while ( $strFind ne "0" ) {
+   $strFind = lc($strFind);
+   $strFind = convert($strFind);
+
+   $letter = substr($strFind,0,1);
+   $filename = "<" . $letter . "WordDefns.txt";
+   open FILE, $filename or die $!;
+   $flag = 0;
+   while ( $flag < 1 ) {
+      if ( defined ($line = <FILE>) ) {
+         chomp($line);
+         @val_array = split(/\//,$line);
+         $word = $val_array[0];
+         if ( substr($word,0,length($strFind)) eq $strFind ) {
+            print "$word\n";
+         }
+         if ( substr($word,0,length($strFind)) gt $strFind ) {
+            $flag = 1;
+         }
+    
+      } else {
+         $flag = 2;
+      }
+   }
+   close FILE;
+   if ( $flag == 2 ) {
+      print "None found\n";
+   }
+   print "Find all words starting with the following string [or 0 to quit this search]: ";
+   $strFind = <>;
+   chomp($strFind);
+}
+
+print "Randomly selected word list - Enter the desired first letter [or 0 to quit this search]: ";
+my $firstLetter = <>;
+chomp($firstLetter);
+
+while ( $firstLetter ne "0" ) {
+   $firstLetter = lc($firstLetter);
+   print "Randomly selected word list - Enter the minimum word length: ";
+   my $min_len = <>;
+   print "Randomly selected word list - Enter the maximum word length: ";
+   my $max_len = <>;
+   print "Randomly selected word list - Enter number of words desired: ";
+   my $num_words = <>;
+
+   $filename = "<" . $firstLetter . "WordDefns.txt";
+
+   my $range = 0;
+   my @words;
+   open INFILE, $filename or die $!;
+   while ( <INFILE> ) {
+      chomp;
+      @val_array = split(/\//,$_);
+      $words[$range] =  $val_array[0];
+      $range++;
+   }
+   close INFILE;
+
+   my $cur_num = 0;
+   my $rnum = 0;
+   my @rlist;
+   while ( $cur_num < $num_words ) {
+      $rnum = int(rand($range));
+      if ( length($words[$rnum]) >= $min_len && length($words[$rnum]) <= $max_len ) {
+         $flag = 0;
+         my $j = 0;
+         for ( $j=0; $j<$cur_num; $j++ ) {
+            if ( $rnum == $rlist[$j] ) {
+               $flag = 1;
+            }
+         }
+         if ( $flag == 0 ) {
+            print "$words[$rnum] ($rnum)\n";
+            $rlist[$cur_num++] = $rnum;
+         }
+      }
+   }
+
+   print "Randomly selected word list - Enter the desired first letter [or 0 to quit this search]: ";
+   $firstLetter = <>;
+   chomp($firstLetter);
+}
+
+#
+# Subroutines
+#
+
+sub convert {
+   my ( $inputLine ) = @_;
+   $inputLine =~ s/[^a-z0-9]//g;
+   return ($inputLine);
+}
+
+sub wordCount {
+   my @word_array = split(/ /,$_[0]);
+   return ($#word_array + 1);
+}
