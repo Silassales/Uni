@@ -1,0 +1,3 @@
+.i(action="post.php",text="Enter Post",name="post",value="Type Here...").b(name="Return to View",link="view.php")
+
+.p().b(name="Return to View",link="view.php")

@@ -1,0 +1,4 @@
+.i(action="addauthor.php",text="Enter Author",name="addauthor",value="Type Here...",text="Enter Stream",name="addstream",value="Enter Stream...",text="Add/Remove",name="addremove",value="Enter either add or remove").b(name="Return to View",link="view.php")
+
+
+.a().b(name="Return to View",link="view.php")
