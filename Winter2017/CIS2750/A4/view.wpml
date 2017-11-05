@@ -1,0 +1,13 @@
+.b(name="Sort Toggle",link="view.php")
+.b(name="Mark All",link="view.php")
+.b(name="Check For New",link="view.php")
+.b(name="Select New Stream",link="index.php")
+.b(name="Change Author",link="index.php")
+.b(name="Add/Remove Author",link="addauthor.php")
+.b(name="Post To Current",link="post.php"<br>)
+.d()
+.t(file="currentPost.txt"<br>)
+.d()
+.b(name="Back",link="view.php")
+.b(name="Forward",link="view.php")
+
