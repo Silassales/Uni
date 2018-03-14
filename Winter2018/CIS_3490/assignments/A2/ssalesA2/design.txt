@@ -1,0 +1,103 @@
+Silas Sales
+0922973
+2/12/2018
+A2
+
+1.1 for i <- 0, len(array) - 1
+        for j <- i + 1, len(array) - 1
+            if array(j) < array(i)
+                inversions++
+
+    # of executions of basic operation: (1/2)*n^2
+
+    Efficiency of class Theda(n^2)
+
+1.2    
+    left = 0, right = n -1
+    if (right > left)
+        mid = right + left / 2
+        count = mergeSort(arr, left ,mid)
+        count += mergeSort(arr, mid+1, right)
+        count += merge(arr, left, mid+1, right)
+    end if
+    return count
+
+    merge()
+        i = start, j = mid
+        while((i < mid-1) && (j <= right))
+            if arr[i] < arr[j]
+            count += mid - i
+
+        return count
+
+    # of executions of basic operation: nlogn
+
+    Efficiency of class Theda(nlogn)
+
+    Master Theorem:
+        T(n) = aT(n/b) + O(n^d) for constants a > 0, b > 1 and d >= 1 then
+
+        T(n) =
+            1. O(n^d) if d > logb(a)
+            2. O(n^dlog(n)) if d = logb(a)
+            3. O(n^(logb(a))) if d < logb(a)
+
+2.1
+    for i <- 0, len(a) - 1
+        for j <- i, len(a) - 1
+            if(j = i) continue
+
+            a = y[j] - y[i]
+            b = x[j] - x[i]
+            c = (x[i]*y[j] - x[j]*y[i])
+            for k <- 0, len(a) -1
+                if k != i || k != j continue
+
+                check all points are either ax + by > c (above) or ax+by < c (below)
+
+                if so this line segement is part of the hull
+
+    # of executions of basic operation: n^3
+
+    Efficiency of class Theda(n^3)
+
+
+2.2
+
+    if array.size <= 5 use 2.1 to solve
+    else
+        hull A = hull(A) -> lower points
+        hull B = hull(B) -> uppwer points
+
+        find upper tangent of A and B 
+        find lower tangent of A and B 
+        remove all points between upper and lower and you are left with the hull
+
+
+        # of executions of basic operation: nlogn
+
+        Efficiency of class Theda(nlogn)
+    
+        Master Therom:
+
+        use (a = 2, b = 2, d = 1) you get T(n) element of Theda(nlgn)
+        Case 2 applies
+
+
+Runtime Results:
+
+1.1 vs 1.2
+
+On my machine:
+(1 run)
+1.1: 6000ms
+1.2: 0ms
+(Run 5 times in a row)
+1.1: 32000ms
+1.2: still couldnt get it to display a runtime, so much faster
+
+2.1 vs 2.2
+
+On my machine:
+2.1: 22000ms
+2.2: counldnt get 2.2 to run, so nothing to compare against
