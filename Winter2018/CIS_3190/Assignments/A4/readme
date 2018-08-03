@@ -1,3 +1,5 @@
+see https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes implemented in ada, C, fortran and python
+
 Sieve.c:
     - cant find higher than 100000 or else seg fault.
     - upper limit doesnt include itself (1-7 doesnt include 7 in the file)
