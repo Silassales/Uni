@@ -1,0 +1,94 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnnnnnnnnnvnnnnnnnnnnnnnnvnnnnnnnnvnnnnnnvnnvnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnn
+
+U sieve%b		sieve.adb		9a83c1ad NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.text_io.unbounded_io%s  a-tiunio.ads	a-tiunio.ali
+W system%s		system.ads		system.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-charac.ads		20070912115821 2d3ec45b
+D a-chlat1.ads		20070912115821 2825df20
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-string.ads		20070406091342 90ac6797
+D a-strmap.ads		20090409150019 9cb836fb
+D a-strunb.ads		20101220072657 e684739b
+D a-suteio.ads		20090409150019 26d8e9aa
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiunio.ads		20070406091342 759c6b0c
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D sieve.adb		20180410024002 31f62cee
+D system.ads		20140416172229 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-imgint.ads		20090409150019 02dbe0c2
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-valint.ads		20090409150019 48a52a3f
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 19|1r6 1r23 2r6 2r33 3r6 12r9 64r19
+X 9 a-string.ads
+16K13*Strings 35e16 19|2r10 2r37
+X 11 a-strunb.ads
+77K21*Unbounded 490e26 19|2w18 2r45
+80R9*Unbounded_String 474e14 19|13r14
+95V13*To_Unbounded_String{80R9} 19|69s23
+X 14 a-textio.ads
+49K13*Text_IO 472e16 19|1w10 1r27 3r10 12r13 64r23
+52P9*File_Type(370R9) 19|12r21
+53n32*Out_File{53E9} 19|64r31
+87U14*Create 19|64s9
+99U14*Close 19|74s9
+250U14*Get_Line 19|18s13
+264U14*Put_Line 19|17s13 23s17 62s9
+X 15 a-tiunio.ads
+25K21*Unbounded_IO 61e29 19|3w18 70r13
+36U14*Put_Line=39:42 19|70s26
+X 19 sieve.adb
+5U11*sieve 5b11 75l5 75t10
+6a5 upper_lim_string{string} 18m22 20r40 20r59 20r83
+7a5 int_array(integer) 32m13 39r16 43m21 55r16 56r47
+8a5 prime_array(integer) 56m17 69r57
+9i5 len{natural} 18m40 20r108
+10i5 upper_lim{integer} 20m13 22r16 22r34 31r28 38r32 42r36 54r28
+11i5 i{integer} 29m9 31r23 32r23 32r29 33m13 33r18 36m9 38r24 38r26 39r26
+. 40r22 44r30 47m13 47r18 52m9 54r23 55r26 56r57 59m13 59r18 66m9 68r23 69r69
+. 71m13 71r18
+11i8 j{integer} 40m17 42r31 43r31 44m21 44r26
+11i11 prime_counter{integer} 50m9 56r29 57m17 57r34 62r32 68r28
+12p5 F{14|52P9} 64m16 70r35 74m15
+13r5 output{11|80R9} 69m13 70r38
+
